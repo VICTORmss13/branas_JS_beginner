@@ -1,8 +1,68 @@
 <html>
   <script> 
-    console.log("Hello World - Primeiros passos na programação");
+    // janeiro 
+    salario1 = 3000
+    aluguel1 = 1000 
+    contaDeAgua1 = 200
+    contaDeLuz1 = 100 
+    internet1 = 100 
+    transporte1 = 300 
+    lazer1 = 300 
+    alimentacao1 = 500
+    saldo1 = (salario1 - aluguel1 - contaDeAgua1 - contaDeLuz1 - internet1 - transporte1 - lazer1 - alimentacao1);
+    console.log("janeiro");
+    console.log(saldo1);
+    //Boolean
+    estaNegativo1 = saldo1 < 0;
+    if (estaNegativo1) {
+      console.log("juros de janeiro");
+      console.log (saldo1 * 0.1)
+    } else {
+      console.log("rendimentos de janeiro");
+      console.log(saldo * 0.05);
+    }    
+    
+    console.log(estaNegativo1);
+    
+    // fevereiro
+    salario2 = 3000
+    aluguel2 = 1200 
+    contaDeAgua2 = 250
+    contaDeLuz2 = 100 
+    internet2 = 100 
+    transporte2 = 500 
+    lazer2 = 0 
+    alimentacao2 = 1000
+    saldo2 = (salario2 - aluguel2 - contaDeAgua2 - contaDeLuz2 - internet2 - transporte2 - lazer2 - alimentacao2);
+    console.log("fevereiro");
+    console.log(saldo2);
+    // Boolean
+    estaNegativo2 = saldo2 < 0;
+    if (estaNegativo2) {
+      console.log("em fevereiro está negativo")
+    } else {
+      console.log("em fevereiro está positivo")
+    }    
+
+    console.log(estaNegativo2);
+
+
+    acumuladoAno = (saldo1 + saldo2);
+
+    console.log("ano");
+    console.log(acumuladoAno);
   </script>
   <body>
     <h1>Hello World - Primeiros passos na programação</h1>
   </body>
 </html>
+
+
+salário: 3000
+aluguel: 1000
+conta de luz: 200 
+conta de água: 100 
+internet: 100 
+transporte: 300 
+lazer: 300 
+alimentação: 500 
