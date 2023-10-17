@@ -4,7 +4,6 @@
       return Math.round(valor*100)/100
     }
 
-
     function calcularJuros (valor) {
       juros = arredondar(valor * 0.1)
       return juros
@@ -30,9 +29,7 @@
       return saldo 
     
     }
-
-
-    // janeiro 
+    saldoInicial = 0
     salario1 = 3000
     aluguel1 = 1000 
     contaDeAgua1 = 200
@@ -41,10 +38,9 @@
     transporte1 = 300 
     lazer1 = 300 
     alimentacao1 = 500
-    saldo1 = calcularSaldo("janeiro", 0, salario1, aluguel1, contaDeAgua1, contaDeLuz1, internet1, transporte1, lazer1, alimentacao1)
+    saldo1 = calcularSaldo("janeiro", saldoInicial, salario1, aluguel1, contaDeAgua1, contaDeLuz1, internet1, transporte1, lazer1, alimentacao1)
     console.log(saldo1);
 
-    // fevereiro
     salario2 = 3000
     aluguel2 = 1200 
     contaDeAgua2 = 250
@@ -56,7 +52,6 @@
     saldo2 = calcularSaldo("fevereiro", saldo1, salario2, aluguel2, contaDeAgua2, contaDeLuz2, internet2, transporte2, lazer2, alimentacao2) 
     console.log(saldo2)
     
-    // marco
     salario3 = 4000
     aluguel3 = 1200 
     contaDeAgua3 = 200
