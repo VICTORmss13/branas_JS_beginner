@@ -2,11 +2,11 @@
   <script> 
 
 
-    function temp (x) {
-      console.log(x + 2);
+    function calcularJuros (valor) {
+      console.log(valor * 0.1);
     }
 
-    temp(2)
+    calcularJuros(100)
 
     // janeiro 
     salario1 = 3000
@@ -24,7 +24,7 @@
     estaNegativo1 = saldo1 < 0
     if (estaNegativo1) {
       console.log("juros de janeiro")
-      juros1 = saldo1 * 0.1
+      juros1 = calcularJuros(saldo1)
       console.log(juros1)
       saldo1 = saldo1 + juros1
     } else {
@@ -51,7 +51,7 @@
     estaNegativo2 = saldo2 < 0;
     if (estaNegativo2) {
       console.log("juros de fevereiro")
-      juros2 = saldo2 * 0.1
+      juros2 = calcularJuros(saldo2)
       console.log(juros2)
       saldo2 = saldo2 + juros2
     } else {
