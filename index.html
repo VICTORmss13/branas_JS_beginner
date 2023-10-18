@@ -1,5 +1,16 @@
 <html>
   <script>     
+    // array
+    letras = ["a", "b", "c", "d"]
+    console.log(letras)
+    // adicionar um elemento
+    letras.push("e")
+    letras.push("f")
+    letras.push("g")
+    letras.pop()
+    console.log(letras)
+
+
     function arredondar (valor) {
       return Math.round(valor*100)/100
     }
@@ -19,7 +30,8 @@
       console.log(mes)
       saldo = saldoInicial
       for (lancamento of lancamentos) {
-        saldo = saldo + lancamento
+        // saldo = saldo + lancamento
+        saldo += lancamento
       }
       estaNegativo = saldo < 0 
       if (estaNegativo) {
