@@ -36,24 +36,27 @@
 
     function calcularSaldo (mes, saldoInicial, lancamentos) {
       console.log(mes)
-      saldo = saldoInicial
+      totalizadorDoMes = { saldo: 0, juros: 0, rendimentos: 0, receitas: 0, despesas: 0 }
+      totalizadorDoMes.saldo = saldoInicial
       for (lancamento of lancamentos) {
         if (lancamento.tipo === "receita") {
-          saldo += lancamento.valor
+          totalizadorDoMes.saldo += lancamento.valor
+          totalizadorDoMes.receitas += lancamento.valor 
         } 
         if (lancamento.tipo === "despesa") {
-          saldo -= lancamento.valor
+          totalizadorDoMes.saldo -= lancamento.valor
+          totalizadorDoMes.despesas += lancamento.valor
         }
       }
-      estaNegativo = saldo < 0 
+      estaNegativo = totalizadorDoMes.saldo < 0 
       if (estaNegativo) {
-        juros = calcularJuros(saldo)
-        saldo = arredondar(saldo + juros)
+        totalizadorDoMes.juros = calcularJuros(totalizadorDoMes.saldo)
+        totalizadorDoMes.saldo = arredondar(totalizadorDoMes.saldo + totalizadorDoMes.juros)
       } else {
-        rendimentos = calcularRendimentos(saldo)
-        saldo = arredondar(saldo + rendimentos)
+        totalizadorDoMes.rendimentos = calcularRendimentos(totalizadorDoMes.saldo)
+        totalizadorDoMes.saldo = arredondar(totalizadorDoMes.saldo + totalizadorDoMes.rendimentos)
       }
-      return saldo 
+      return totalizadorDoMes 
     
     }
     saldoInicial = 0
@@ -69,8 +72,8 @@
     new Lancamento("Condomínio", "despesa", 300),
     new Lancamento("Farmácia", "despesa", 100)
     ]
-    saldo1 = calcularSaldo("janeiro", saldoInicial, lancamentosJaneiro)
-    console.log(saldo1);
+    totalizadorDoMes1 = calcularSaldo("janeiro", saldoInicial, lancamentosJaneiro)
+    console.log(totalizadorDoMes1);
     lancamentosFevereiro = [
     new Lancamento("Salário", "receita", 3000),
     new Lancamento("Aluguel", "despesa", 1200),
@@ -81,8 +84,8 @@
     new Lancamento("Alimentação", "despesa", 1000),
     new Lancamento("Condomínio", "despesa", 400)
     ]
-    saldo2 = calcularSaldo("fevereiro", saldo1, lancamentosFevereiro) 
-    console.log(saldo2)
+    totalizadorDoMes2 = calcularSaldo("fevereiro", totalizadorDoMes1.saldo, lancamentosFevereiro) 
+    console.log(totalizadorDoMes2)
     lancamentosMarco = [
     new Lancamento("Salário",  "receita", 4000),
     new Lancamento("Aluguel",  "despesa", 1200),
@@ -94,9 +97,9 @@
     new Lancamento("Alimentação",  "despesa", 1000),
     new Lancamento("Condomínio",  "despesa", 400)
     ]
-    saldo3 = calcularSaldo("marco", saldo2, lancamentosMarco)
-    console.log(saldo3)
-    acumuladoAno = saldoInicial + saldo1 + saldo2;
+    totalizadorDoMes3 = calcularSaldo("marco", totalizadorDoMes2.saldo, lancamentosMarco)
+    console.log(totalizadorDoMes3)
+    acumuladoAno = saldoInicial + totalizadorDoMes1.saldo + totalizadorDoMes2.saldo;
     console.log("ano");
     console.log(acumuladoAno);
 
