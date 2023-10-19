@@ -30,13 +30,12 @@
 
     function calcularRendimentos (valor) {
       rendimentos = arredondar(valor * 0.005)
-      console.log(rendimentos)
       return rendimentos 
     }
 
     function calcularSaldo (mes, saldoInicial, lancamentos) {
       console.log(mes)
-      totalizadorDoMes = { saldo: 0, juros: 0, rendimentos: 0, receitas: 0, despesas: 0 }
+      totalizadorDoMes = { saldo: 0, saldoInicial, juros: 0, rendimentos: 0, receitas: 0, despesas: 0, distribuicaoDeDespesas: [] }
       totalizadorDoMes.saldo = saldoInicial
       for (lancamento of lancamentos) {
         if (lancamento.tipo === "receita") {
@@ -48,6 +47,15 @@
           totalizadorDoMes.despesas += lancamento.valor
         }
       }
+      for (lancamento of lancamentos) {
+        if(lancamento.tipo === "despesa") {
+          percentual = arredondar((lancamento.valor/totalizadorDoMes.despesas)*100)
+          console.log(lancamento.categoria, percentual)
+          totalizadorDoMes.distribuicaoDeDespesas.push({ categoria: lancamento.categoria, percentual})
+        }
+      }
+
+      console.log(totalizadorDoMes.despesas)
       estaNegativo = totalizadorDoMes.saldo < 0 
       if (estaNegativo) {
         totalizadorDoMes.juros = calcularJuros(totalizadorDoMes.saldo)
@@ -103,19 +111,19 @@
     console.log("ano");
     console.log(acumuladoAno);
 
-    console.log("Quantidade de lançamentos em janeiro:", lancamentosJaneiro.length)
-    lancamentosJaneiro[10] = { categoria: "Financiamento", tipo: "despesa", valor: 200 }
-    for (lancamento of lancamentosJaneiro) {
-      console.log(lancamento.categoria, lancamento.valor)
-    }
+    // console.log("Quantidade de lançamentos em janeiro:", lancamentosJaneiro.length)
+    // lancamentosJaneiro[10] = { categoria: "Financiamento", tipo: "despesa", valor: 200 }
+    // for (lancamento of lancamentosJaneiro) {
+    //   console.log(lancamento.categoria, lancamento.valor)
+    // }
 
-    nome = "Rodrigo Branas"
-    idade = 38 
-    email = "rodrigo@branas.io"
-    casado = true
+    // nome = "Rodrigo Branas"
+    // idade = 38 
+    // email = "rodrigo@branas.io"
+    // casado = true
     
-    pessoa = { nome: "Rodrigo Branas", idade: 38, email: "rodrigo@branas.io", casado: true }
-    console.log(pessoa)
+    // pessoa = { nome: "Rodrigo Branas", idade: 38, email: "rodrigo@branas.io", casado: true }
+    // console.log(pessoa)
 
   </script>
   <body>
