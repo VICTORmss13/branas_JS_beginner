@@ -3,10 +3,20 @@
     // Estruturas de definição de tipo
     class Lancamento {
 
+      constructor (categoria, tipo, valor) {
+        if (tipo !== "receita" && tipo !== "despesa") {
+          console.log("O objeto não deve ser criado.")
+        }
+        this.categoria = categoria
+        this.tipo = tipo 
+        this.valor = valor
+      }
     }
 
-    novoLancamento = new Lancamento()
-    console.log(novoLancamento)
+    novoLancamento1 = new Lancamento("Salário", "teste", 3000)
+    novoLancamento2 = new Lancamento("Aluguel", "despesa", 1000)
+    console.log(novoLancamento1)
+    console.log(novoLancamento2)
 
     function arredondar (valor) {
       return Math.round(valor*100)/100
