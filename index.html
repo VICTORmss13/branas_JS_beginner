@@ -5,18 +5,19 @@
 
       constructor (categoria, tipo, valor) {
         if (tipo !== "receita" && tipo !== "despesa") {
-          console.log("O objeto não deve ser criado.")
+          throw new Error("Lançamento Inválido: Tipo deve ser receita ou despesa")
+        }
+        if (valor <= 0) {
+          throw new Error("Lançamento Inválido: Valor deve ser maior que zero")
+        }
+        if (categoria === "") {
+          throw new Error("Lançamento Inválido: A Categoria é obrigatório")
         }
         this.categoria = categoria
         this.tipo = tipo 
         this.valor = valor
       }
     }
-
-    novoLancamento1 = new Lancamento("Salário", "teste", 3000)
-    novoLancamento2 = new Lancamento("Aluguel", "despesa", 1000)
-    console.log(novoLancamento1)
-    console.log(novoLancamento2)
 
     function arredondar (valor) {
       return Math.round(valor*100)/100
@@ -57,41 +58,41 @@
     }
     saldoInicial = 0
     lancamentosJaneiro = [
-    { categoria: "Salário", tipo: "receita", valor: 3000 },
-    { categoria: "Aluguel", tipo: "despesa", valor: 1000 },
-    { categoria: "Conta de Luz", tipo: "despesa", valor: 200 },
-    { categoria: "Conta de Água", tipo: "despesa", valor: 100 },
-    { categoria: "Internet", tipo: "despesa", valor: 100 },
-    { categoria: "Transporte", tipo: "despesa", valor: 300 },
-    { categoria: "Lazer", tipo: "despesa", valor: 300 },
-    { categoria: "Alimentação", tipo: "despesa", valor: 500 },
-    { categoria: "Condomínio", tipo: "despesa", valor: 300 },
-    { categoria: "Farmácia", tipo: "despesa", valor: 100 }
+    new Lancamento("Salário", "receita", 3000),
+    new Lancamento("Aluguel", "despesa", 1000),
+    new Lancamento("Conta de Luz", "despesa", 200),
+    new Lancamento("Conta de Água", "despesa", 100),
+    new Lancamento("Internet", "despesa", 100),
+    new Lancamento("Transporte", "despesa", 300),
+    new Lancamento("Lazer", "despesa", 300),
+    new Lancamento("Alimentação", "despesa", 500),
+    new Lancamento("Condomínio", "despesa", 300),
+    new Lancamento("Farmácia", "despesa", 100)
     ]
     saldo1 = calcularSaldo("janeiro", saldoInicial, lancamentosJaneiro)
     console.log(saldo1);
     lancamentosFevereiro = [
-    { categoria: "Salário", tipo: "receita", valor: 3000 },
-    { categoria: "Aluguel", tipo: "despesa", valor: 1200 },
-    { categoria: "Conta de Luz", tipo: "despesa", valor: 250 },
-    { categoria: "Conta de Água", tipo: "despesa", valor: 100 },
-    { categoria: "Internet", tipo: "despesa", valor: 100 }, 
-    { categoria: "Transporte", tipo: "despesa", valor: 500 },
-    { categoria: "Alimentação", tipo: "despesa", valor: 1000 },
-    { categoria: "Condomínio", tipo: "despesa", valor: 400 }
+    new Lancamento("Salário", "receita", 3000),
+    new Lancamento("Aluguel", "despesa", 1200),
+    new Lancamento("Conta de Luz", "despesa", 250),
+    new Lancamento("Conta de Água", "despesa", 100),
+    new Lancamento("Internet", "despesa", 100), 
+    new Lancamento("Transporte", "despesa", 500),
+    new Lancamento("Alimentação", "despesa", 1000),
+    new Lancamento("Condomínio", "despesa", 400)
     ]
     saldo2 = calcularSaldo("fevereiro", saldo1, lancamentosFevereiro) 
     console.log(saldo2)
     lancamentosMarco = [
-    { categoria: "Salário", tipo: "receita", valor: 4000 },
-    { categoria: "Aluguel", tipo: "despesa", valor: 1200 },
-    { categoria: "Conta de Luz", tipo: "despesa", valor: 200 },
-    { categoria: "Conta de Água", tipo: "despesa", valor: 100 },
-    { categoria: "Internet", tipo: "despesa", valor: 200 },
-    { categoria: "Transporte", tipo: "despesa", valor: 500 },
-    { categoria: "Lazer", tipo: "despesa", valor: 800 },
-    { categoria: "Alimentação", tipo: "despesa", valor: 1000 },
-    { categoria: "Condomínio", tipo: "despesa", valor: 400 }
+    new Lancamento("Salário",  "receita", 4000),
+    new Lancamento("Aluguel",  "despesa", 1200),
+    new Lancamento("Conta de Luz",  "despesa", 200),
+    new Lancamento("Conta de Água",  "despesa", 100),
+    new Lancamento("Internet",  "despesa", 200),
+    new Lancamento("Transporte",  "despesa", 500),
+    new Lancamento("Lazer",  "despesa", 800),
+    new Lancamento("Alimentação",  "despesa", 1000),
+    new Lancamento("Condomínio",  "despesa", 400)
     ]
     saldo3 = calcularSaldo("marco", saldo2, lancamentosMarco)
     console.log(saldo3)
