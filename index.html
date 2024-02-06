@@ -33,6 +33,17 @@
       return rendimentos 
     }
 
+    function distribuirDespesas (lancamentos, total) {
+      for (lancamento of lancamentos) {
+        if(lancamento.tipo === "despesa") {
+          percentual = arredondar((lancamento.valor/total)*100)
+          console.log(lancamento.categoria, percentual)
+          distribuicaoDeDespesas.push({ categoria: lancamento.categoria, percentual})
+        }
+      }
+
+    }
+
     function calcularSaldo (mes, saldoInicial, lancamentos) {
       console.log(mes)
       totalizadorDoMes = { saldo: 0, saldoInicial, juros: 0, rendimentos: 0, receitas: 0, despesas: 0, distribuicaoDeDespesas: [] }
@@ -47,13 +58,8 @@
           totalizadorDoMes.despesas += lancamento.valor
         }
       }
-      for (lancamento of lancamentos) {
-        if(lancamento.tipo === "despesa") {
-          percentual = arredondar((lancamento.valor/totalizadorDoMes.despesas)*100)
-          console.log(lancamento.categoria, percentual)
-          totalizadorDoMes.distribuicaoDeDespesas.push({ categoria: lancamento.categoria, percentual})
-        }
-      }
+      totalizadorDoMes.distribuicaoDeDespesas = distribuirDespesas
+
 
       console.log(totalizadorDoMes.despesas)
       estaNegativo = totalizadorDoMes.saldo < 0 
